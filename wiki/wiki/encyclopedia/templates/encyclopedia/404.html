@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Found Entry</title>
+    <style>
+        .padre {
+            position: relative;
+            }
+        .hijo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: 15% 0 0 -16%;
+        }
+        .container {
+            height: 550px;
+            position: relative;
+        }
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        a {
+            text-decoration: none;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="padre">
+        <div class="hijo">
+            <p>
+                This entry does exist in the encyclopedia.
+                Please change the title.
+            </p>
+           
+        </div>
+    </div>
+    <div class="container">
+        <div class="center">
+          <button  > <a href="{% url  'encyclopedia:create' %}"> Return to create</a></button>
+        </div>
+      </div>
+
+</body>
+</html>

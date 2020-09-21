@@ -1,0 +1,15 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <div style="padding-bottom: 100px;">
+
+        {{ content | safe }}
+        
+    </div>
+
+    <button> <a href="edit/{{ title }} ">Edit</a></button>
+{% endblock %}
