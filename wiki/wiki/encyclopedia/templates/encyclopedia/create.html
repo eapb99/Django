@@ -6,7 +6,6 @@
 <H1>HOLA</H1>
 {% block body %}
 <h1>Add Task</h1>
-
     <p style="color: red; text-align: center; font-size: 100%;">
         <em>
             <b>
@@ -17,6 +16,6 @@
 <form action="{% url 'encyclopedia:create' %}" method="post">
     {% csrf_token %}
     {{ form }}
-    <input type="submit" value="Add a new entry">
+    <input type="submit" class="boton" value="Add a new entry">
 </form>
 {% endblock %}

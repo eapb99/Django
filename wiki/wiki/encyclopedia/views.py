@@ -49,7 +49,7 @@ def create(request):
             #request.session['encyclopedias'] += [task]
             else :
                 util.save_entry(task,area)
-            return HttpResponseRedirect(reverse('encyclopedia:index'))
+            return HttpResponseRedirect(reverse("encyclopedia:entry", args=(task,)))
         else:
             return render (request, 'encyclopedia/create.html', {'form':form})
     return render(request,'encyclopedia/create.html', {'form': NewTaskForm()})
@@ -75,6 +75,7 @@ def editpage(request,title):
     html=util.get_entry(title.lower().capitalize())
     if request.method== 'GET':
         formulario = NewTaskForm(request.POST)
+        f2= util.get_entry(title)
         if title in util.list_entries():
             util.list_entries().remove(title)
             """if html!= formulario.comment:        
@@ -82,7 +83,7 @@ def editpage(request,title):
                 util.save_entry(title,html)
                 return HttpResponse("diferentes")"""
                     #return HttpResponseRedirect(reverse('encyclopedia:index'))
-        formulario = NewTaskForm(initial={ 'encyclopedia':"HOLA", 'comment':"SA" })
+        formulario = NewTaskForm(initial={ 'encyclopedia':title, 'comment':f2 })
         formulario.initial
         return render(request,'encyclopedia/edit.html', {'form': formulario})
     return HttpResponseRedirect(reverse('encyclopedia:index'))
