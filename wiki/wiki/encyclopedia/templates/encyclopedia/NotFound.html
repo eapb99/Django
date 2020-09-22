@@ -3,50 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Not Found Entry</title>
     <style>
-        .padre {
-            position: relative;
-            }
-        .hijo {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin: 15% 0 0 -20%;
-        }
-        .container {
-            height: 550px;
-            position: relative;
-        }
-        .center {
+        * {
             margin: 0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+            padding: 0;
+        }
+        body {
+            background-color: rgb(206, 200, 200);
         }
         a {
             text-decoration: none;
+            color: black;
+        }
+        button {
+            text-decoration: none;
+        }
+        h1 {
+            font-family: sans-serif;            
+        } 
+        p {
+            font-size: 24pt;
 
         }
     </style>
 </head>
 <body>
-    <div class="padre">
-        <div class="hijo">
-            <p>
-                This entry doesn't exist in the encyclopedia.
-                Please write the correct entry
-            </p>
-           
+    <div style="margin: 150px 0px 0px 0px;" class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-2">
+                <h1 style="text-align: center;" class="display-1"> 404</h1>
+            </div>
         </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6" >
+                <p style="text-align: center;">
+                    <em>
+                        OPPS. SORRY WE CAN'T FIND THIS PAGE IN OUR ENCYCLOPEDIA
+                    </em>
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="row justify-content-center">
+            <button type="button"  class="btn btn-secondary btn-lg">
+                <a  style="text-decoration: none; color: black;" href="{% url  'encyclopedia:index' %}"> HOME </a>
+            </button>
+
+
+        </div>
+
     </div>
-    <div class="container">
-        <div class="center">
-          <button  > <a href="{% url  'encyclopedia:index' %}">HOME</a></button>
-        </div>
-      </div>
+
 
 </body>
 </html>

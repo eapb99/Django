@@ -36,7 +36,7 @@ def create(request):
     if request.method == 'POST':
         form = NewTaskForm(request.POST)
         if form.is_valid():
-            task= form.cleaned_data['encyclopedia'].capitalize()
+            task= form.cleaned_data['encyclopedia']
             area=form.cleaned_data['comment']
             if task in util.list_entries():
                 return render (request, 'encyclopedia/404.html')
