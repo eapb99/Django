@@ -17,7 +17,7 @@ def index(request):
     if 'encyclopedias' not in request.session:
         request.session['encyclopedias'] =[]
     return render(request, "encyclopedia/index.html", {
-        "entries": util.list_entries(),
+        "entries":[e for e in  util.list_entries() ],
         'encyclopedias': request.session['encyclopedias']
     })
 
@@ -38,8 +38,14 @@ def create(request):
         if form.is_valid():
             task= form.cleaned_data['encyclopedia']
             area=form.cleaned_data['comment']
-            if task in util.list_entries():
-                return render (request, 'encyclopedia/404.html')
+            task=task.lower().capitalize()
+            l=[]
+            for i in util.list_entries():
+                l.append(i.lower().capitalize())
+            if task in l:
+                mensaje ="""This entry does exist in the encyclopedia.
+                                Please change the title."""
+                return render (request, 'encyclopedia/create.html',{"mensaje":mensaje,"form":form})
             #request.session['encyclopedias'] += [task]
             else :
                 util.save_entry(task,area)
@@ -54,15 +60,14 @@ def entry_page(request,title):
     if len(title.split("."))==1:
         title=title+".md"
     t,e=title.split(".")
-    if util.get_entry(t.lower().capitalize()) is None:
-        return render (request,'encyclopedia/NotFound.html')
+    if util.get_entry(t) is None:
+        return render (request,'encyclopedia/NotFound.html', {'title':t.upper()})
     else:
-        t=t.capitalize()
-        html=util.get_entry(t.lower().capitalize())
-        mder= markdown2.markdown(html,safe_mode='remove')
+        html=util.get_entry(t)
+        mder= markdown2.markdown(html)
         return render( request,"encyclopedia/entry.html", {
             'content':mder,
-            "title":t,
+            "title":t.lower().capitalize(),
             "form":NewTaskForm(),
         })
 
@@ -84,17 +89,18 @@ def editpage(request,title):
 
 def search(request):
     title  = request.GET['q']
-    if title in util.list_entries():
+    L = [entry for entry in util.list_entries() if title.lower() in entry.lower()]
+    if len(L)!=0:
         if util.get_entry(title):
             return HttpResponseRedirect(reverse("encyclopedia:entry", args=(title,)))
         else:
             # query does not match!
-            return render(request, "encyclopedia/index.html", {
-                "entries": [entry for entry in util.list_entries() if title.lower() in entry.lower()],
+            return render(request, "encyclopedia/search.html", {
+                "entries": L,
                 "title": f'"{title}" search results',
-                "heading": f'Search Results for "{title}"'
+                "heading": f'All results that contain "{title}"'
         })
-    return render(request,"encyclopedia/NotFound.html")
+    return render(request,"encyclopedia/NotFound.html", {'title':title.upper()})
 
 
 def random_page(request):
