@@ -1,52 +1,57 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Not Found Entry</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Entry does exist</title>
     <style>
-        .padre {
-            position: relative;
-            }
-        .hijo {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin: 15% 0 0 -16%;
-        }
-        .container {
-            height: 550px;
-            position: relative;
-        }
-        .center {
+        * {
             margin: 0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+            padding: 0;
+        }
+        body {
+            background-color: #ffc0a5;
         }
         a {
             text-decoration: none;
-
+            color: black;
+        }
+        button {
+            text-decoration: none;
+        }
+        h1 {
+            font-family: sans-serif;            
+        } 
+        p {
+            font-size: 24pt;
         }
     </style>
 </head>
 <body>
-    <div class="padre">
-        <div class="hijo">
-            <p>
-                This entry does exist in the encyclopedia.
-                Please change the title.
-            </p>
-           
+    <div style="margin: 100px 0px 0px 0px;" class="container-fluid">
+        <div class="row justify-content-center">
+                <img width="150px" src="{% static 'encyclopedia/warning.png' %}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="WARNING">
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6" >
+                <p style="text-align: center; font-size: 30px;">
+                    <em>
+                        This entry does exist in the encyclopedia. <br>
+                                Please change the title.
+                    </em>
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="row justify-content-center">
+            <button style="background-color: bisque;" type="button"  class="btn btn-lg">
+                <a  style="text-decoration: none; color: black;" href="{% url 'encyclopedia:create' %}"> CREATE PAGE </a>
+            </button>
         </div>
     </div>
-    <div class="container">
-        <div class="center">
-          <button  > <a href="{% url  'encyclopedia:create' %}"> Return to create</a></button>
-        </div>
-      </div>
-
+        
 </body>
 </html>
