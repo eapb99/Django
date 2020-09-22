@@ -6,6 +6,14 @@
 <H1>HOLA</H1>
 {% block body %}
 <h1>Add Task</h1>
+
+    <p style="color: red; text-align: center; font-size: 100%;">
+        <em>
+            <b>
+                {{mensaje}}
+            </b>
+        </em>
+    </p>
 <form action="{% url 'encyclopedia:create' %}" method="post">
     {% csrf_token %}
     {{ form }}
