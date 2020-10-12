@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block body %}
-    <div class="content" style="padding-bottom: 100px;">
+    <div class="content" >
 
         {{ content | safe }}
         
     </div>
 
-    <button> <a href="edit/{{ title }} ">Edit</a></button>
+    <a class="btn btn-primary" href="{{ title }}/edit" role="button">Edit</a>
 {% endblock %}

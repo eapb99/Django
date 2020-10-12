@@ -13,9 +13,9 @@
             </b>
         </em>
     </p>
-<form action="{% url 'encyclopedia:create' %}" method="post">
+<form style="width:85%;" action="{% url 'encyclopedia:create' %}" method="post">
     {% csrf_token %}
     {{ form }}
-    <input type="submit" class="boton" value="Add a new entry">
+    <button type="submit" class="btn btn-primary">Create</button>
 </form>
 {% endblock %}
