@@ -5,6 +5,21 @@
 {% endblock %}
 
 {% block body %}
+    <style>
+    ul {
+        list-style: none;
+    }
+    ul li a::before {
+        content: "\2022";
+        color: blue;
+        font-weight: bold;
+        display: inline-block; 
+        width: 1em;
+        margin-left: 1px;
+    }
+
+        
+    </style>
     <h1>All Pages</h1>
 
     <ul>

@@ -5,15 +5,16 @@
 <html lang="en">
     <head>
         <title>{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="{% static 'encyclopedia/styles2.css' %}" rel="stylesheet">
     </head>
     <body>
         <div class="row">
-            <div class="sidebar col-lg-2 col-md-3">
+            <div class="sidebar col-lg-2 col-md-3 col-3">
                 <h2>Wiki</h2>
                 <form action="{% url 'encyclopedia:search' %}">
-                    <input class="search" type="text" name="q" placeholder="Search Encyclopedia">                
+                    <input class="search" name="q" placeholder="Search Encyclopedia" type="text" value="">
                 </form>
                 <div>
                     <a href="{% url 'encyclopedia:index' %}">Home</a>
@@ -27,7 +28,7 @@
                 {% block nav %}
                 {% endblock %}
             </div>
-            <div class="main col-lg-10 col-md-9">
+            <div class="main col-lg-10 col-md-9 col-9">
                 {% block body %}
                 {% endblock %}
             </div>

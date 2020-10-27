@@ -32,13 +32,13 @@ def create(request):
             if task in l:
                 mensaje ="""This entry does exist in the encyclopedia.
                                 Please change the title."""
-                return render (request, 'encyclopedia/create.html',{"mensaje":mensaje,"form":form})
+                return render (request, 'encyclopedia/create.html',{"mensaje":mensaje,"form":form,"type":"Add Task"})
             else :
                 util.save_entry(task,area)
             return HttpResponseRedirect(reverse("encyclopedia:entry", args=(task,)))
         else:
-            return render (request, 'encyclopedia/create.html', {'form':form})
-    return render(request,'encyclopedia/create.html', {'form': NewTaskForm()})
+            return render (request, 'encyclopedia/create.html', {'form':form,"type":"Add Task"})
+    return render(request,'encyclopedia/create.html', {'form': NewTaskForm(),"type":"Add Task"})
 
 def entry_page(request,title):
     if len(title.split("."))==1:

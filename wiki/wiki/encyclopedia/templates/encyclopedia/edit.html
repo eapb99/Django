@@ -4,13 +4,15 @@
     Edit Entry
 {% endblock %}
 {% block body %}
-<h1>Add Task</h1>
-<form style="width: 80%;" action="{% url 'encyclopedia:submit' %}" method="post">
+<h1> Edit </h1>
+<div style=" display:flex;justify-content: center;align-items: center;">
+<form style="width: 80%; height:75%" action="{% url 'encyclopedia:submit' %}" method="post">
     
     {% csrf_token %}    
-    
+
     {{ form }}
     
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+</div>
 {% endblock %}

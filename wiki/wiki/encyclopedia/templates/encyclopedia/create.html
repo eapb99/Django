@@ -3,9 +3,8 @@
 {% block title %}
     CREATE
 {% endblock %}
-<H1>HOLA</H1>
 {% block body %}
-<h1>Add Task</h1>
+<h1> {{ type }}</h1>
     <p style="color: red; text-align: center; font-size: 100%;">
         <em>
             <b>
@@ -13,9 +12,11 @@
             </b>
         </em>
     </p>
+    <div style=" display:flex;justify-content: center;align-items: center;">
 <form style="width:85%;" action="{% url 'encyclopedia:create' %}" method="post">
     {% csrf_token %}
     {{ form }}
     <button type="submit" class="btn btn-primary">Create</button>
 </form>
+</div>
 {% endblock %}

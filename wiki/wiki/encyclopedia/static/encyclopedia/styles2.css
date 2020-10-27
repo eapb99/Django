@@ -1,11 +1,13 @@
 body {
     margin: 0;
     background-color: rgb(19, 18, 18);
+    width: auto;
+    height: auto;
+    max-width: 100%;
 }
 
 .content {
     color: white;
-
 }
 
 code {
@@ -20,13 +22,8 @@ h1 {
 
 div a {
     margin: 5px;
-
 }
 
-textarea {
-    height: 90vh;
-    width: 80%;
-}
 
 .main {
     padding: 10px;
@@ -66,7 +63,6 @@ textarea {
     background-color: #dae3d5;
     height: 100vh;
     padding: 20px;
-    
 }
 .sidebar div a {
     text-decoration: none;
